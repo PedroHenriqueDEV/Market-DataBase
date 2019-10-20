@@ -7,8 +7,7 @@ loop do
     puts "|    O que quer fazer?       |"
     puts "+----------------------------+"
     puts "|  (1)Adicionar produtos     |"
-    puts "|  (2)Comprar produtos       |"
-    puts "|  (3)Ver produtos           |"
+    puts "|  (2)Ver produtos           |"
     puts "+----------------------------+"
 
     esco = gets.chomp.to_i
@@ -33,8 +32,6 @@ loop do
         puts "+++++PRODUTO ADICIONADO+++++"
 
     elsif esco == 2
-        break
-    elsif esco == 3
         dbproduver = Mysql2::Client.new(
             :host => "localhost",
             :username => "root",
@@ -45,6 +42,8 @@ loop do
             rd.each do |row|
                 puts "Loja: #{row["nomeloja"]}, Produto: #{row["nomepro"]}, Preço: #{row["precopro"]}"
             end
+    else
+        break 
     end
 end
 
